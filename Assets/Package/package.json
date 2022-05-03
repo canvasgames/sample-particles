@@ -1,6 +1,6 @@
 {
   "name": "com.canvasgames.particles",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Canvas Particle Library",
   "description": "Library of common particles of the studio",
   "unity": "2021.3",
