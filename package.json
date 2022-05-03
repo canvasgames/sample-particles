@@ -1,0 +1,16 @@
+{
+  "name": "com.canvasgames.particles",
+  "version": "1.0.1",
+  "displayName": "Canvas Particle Library",
+  "description": "Library of common particles of the studio",
+  "unity": "2021.3",
+  "icon": ".icon.png",
+  "keywords": [ "particle", "library" ],
+  "author": {
+    "name": "Canvas Games",
+    "email": "contact@canvasgames.com",
+    "url": "https://canvasgames.com.br"
+  },
+  "dependencies": {
+  }
+}
