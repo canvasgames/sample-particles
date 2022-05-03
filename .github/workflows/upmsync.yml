@@ -1,0 +1,41 @@
+name: UPM Sync
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install DiffUtils
+        run: |
+          git config --local user.email "contact@canvasgames.com.br"
+          git config --local user.name "canvas-bot"
+          sudo apt-get install diffutils
+      
+      - name: Update README
+        run: |
+          if ! cmp --silent "README.md" "Assets/Package/README.md"; then
+              echo "different"
+              cp -f README.md Assets/Package/README.md
+              git add --a
+              git commit -m "Updated README.md"
+              git push origin
+          fi
+
+      - name: Cook UPM
+        run: |
+          git subtree split -P Assets/Package/ -b upm
+          git checkout upm
+          ls
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: upm
+          force: true
